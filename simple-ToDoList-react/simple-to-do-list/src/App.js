@@ -12,7 +12,7 @@ const App = () => {
 
   const checkComplete = (id) => {
     const newTodos = [...todos];
-    newTodos[id].isCompleted = true;
+    newTodos[id].isCompleted = !newTodos[id].isCompleted;
     setTodos(newTodos);
   };
 
@@ -33,9 +33,16 @@ const App = () => {
         <button type="submit">adicionar</button>
       </form>
       <ul>
-        {todos.map((todo, index /*  checkComplete */) => (
-          <li>
-            <input className="m-2" type="checkbox" onClick={() => checkComplete(index)} style={{ textDecoration: todo.isCompleted ? 'line-through' : '' }} />
+        {todos.map((todo, index) => (
+          <li
+            key={todo.title}
+            style={{ textDecoration: todo.isCompleted ? 'line-through' : '' }}
+          >
+            <input
+              className="m-2"
+              type="checkbox"
+              onClick={() => checkComplete(index)}
+            />
             {todo.title}
           </li>
         ))}
