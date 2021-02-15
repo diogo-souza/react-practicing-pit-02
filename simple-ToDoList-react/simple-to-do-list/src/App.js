@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import React, { useState } from 'react';
 import {
-  Container, Row, Col, Form, Button,
+  Container, Row, Col, Form, Button, ListGroup,
 } from 'react-bootstrap';
 
 import Card from './components/Card';
@@ -52,11 +52,12 @@ const App = () => {
           </Col>
         </Row>
         <Row>
-          <ul>
+          <ListGroup className="m-3">
             {todos.map((todo, index) => (
-              <li
+              <ListGroup.Item
                 key={todo.title}
                 style={{ textDecoration: todo.isCompleted ? 'line-through' : '' }}
+                variant="primary"
               >
                 <input
                   className="m-2"
@@ -64,9 +65,9 @@ const App = () => {
                   onClick={() => checkComplete(index)}
                 />
                 {todo.title}
-              </li>
+              </ListGroup.Item>
             ))}
-          </ul>
+          </ListGroup>
         </Row>
       </Container>
     </Card>
