@@ -27,6 +27,11 @@ const App = () => {
     setText('');
   };
 
+  const deleteTodo = (event) => {
+    todos.splice(event.target.value, 1);
+    setTodos([...todos]);
+  };
+
   return (
 
     <Card title="Todo App" className="m-4">
@@ -58,13 +63,25 @@ const App = () => {
                 key={todo.title}
                 style={{ textDecoration: todo.isCompleted ? 'line-through' : '' }}
                 variant="primary"
+                className="m-1"
               >
+
                 <input
                   className="m-2"
                   type="checkbox"
                   onClick={() => checkComplete(index)}
                 />
+
                 {todo.title}
+                <Button
+                  type="button"
+                  variant="danger"
+                  className="m-2"
+                  onClick={deleteTodo}
+                  value={index}
+                >
+                  Delete
+                </Button>
               </ListGroup.Item>
             ))}
           </ListGroup>
