@@ -8,17 +8,20 @@ import { GiZeusSword, GiPencil } from 'react-icons/gi';
 import Card from './components/Card';
 
 const App = () => {
+  // Declarando os estados
   const [todos, setTodos] = useState([{
     isCompleted: false,
   }]);
   const [text, setText] = useState('');
 
+  // Função de verificação da tarefa
   const checkComplete = (id) => {
     const newTodos = [...todos];
     newTodos[id].isCompleted = !newTodos[id].isCompleted;
     setTodos(newTodos);
   };
 
+  // Função de adição de tarefa
   const submitButtonAdd = () => {
     if (!text.trim()) {
       alert('Ta vazio');
@@ -28,11 +31,13 @@ const App = () => {
     setText('');
   };
 
+  // Função de deletar a tarefa
   const deleteTodo = (event) => {
     todos.splice(event.target.value, 1);
     setTodos([...todos]);
   };
 
+  // Corpo da Aplicação
   return (
 
     <Card title="Todo App" className="m-4">
