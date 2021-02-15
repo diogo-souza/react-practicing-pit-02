@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {
   Container, Row, Col, Form, Button, ListGroup,
 } from 'react-bootstrap';
+import { GiZeusSword, GiPencil } from 'react-icons/gi';
 
 import Card from './components/Card';
 
@@ -36,7 +37,10 @@ const App = () => {
 
     <Card title="Todo App" className="m-4">
       <Container>
-        <h2>Lista de atividades</h2>
+        <h2>
+          Lista de atividades
+          <GiPencil className="m-2" />
+        </h2>
         <Row>
           <Col xl={12} md={9}>
             <Form>
@@ -80,7 +84,8 @@ const App = () => {
                   onClick={deleteTodo}
                   value={index}
                 >
-                  Delete
+                  Del
+                  <GiZeusSword className="m-2" />
                 </Button>
               </ListGroup.Item>
             ))}
